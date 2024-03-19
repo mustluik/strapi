@@ -7678,6 +7678,8 @@ __metadata:
     "@testing-library/dom": "npm:9.2.0"
     "@testing-library/react": "npm:14.0.0"
     "@testing-library/user-event": "npm:14.4.3"
+    "@types/koa-range": "npm:0.3.5"
+    "@types/koa-static": "npm:4.0.2"
     axios: "npm:1.6.8"
     byte-size: "npm:7.0.1"
     cropperjs: "npm:1.6.1"
@@ -8957,6 +8959,15 @@ __metadata:
     "@types/koa": "npm:*"
     "@types/passport": "npm:*"
   checksum: b2f58c9018d0f4e1cfeb2c59f7b0bad580f5cda20bfe9e93d9bf858abbae1142f4fb6d9005da5d329c531be2cd1ec6df7d5c75096ea79e005f722ab658a62fdf
+  languageName: node
+  linkType: hard
+
+"@types/koa-range@npm:0.3.5":
+  version: 0.3.5
+  resolution: "@types/koa-range@npm:0.3.5"
+  dependencies:
+    "@types/koa": "npm:*"
+  checksum: 6c0aafe428d69ae4b7c2dbf3c578af79bbc515e8d19b54759093399638fc5a326ad1c0f1fef90a917d4cd5bc8868a50b6ffc68ff6c55c2f570fa8ba18ef5b818
   languageName: node
   linkType: hard
 

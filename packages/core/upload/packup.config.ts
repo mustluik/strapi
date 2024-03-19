@@ -1,5 +1,4 @@
 import { Config, defineConfig } from '@strapi/pack-up';
-import { transformWithEsbuild } from 'vite';
 
 const config: Config = defineConfig({
   bundles: [
@@ -8,6 +7,13 @@ const config: Config = defineConfig({
       import: './dist/admin/index.mjs',
       require: './dist/admin/index.js',
       runtime: 'web',
+    },
+    {
+      types: './dist/server/src/index.d.ts',
+      source: './server/src/index.ts',
+      import: './dist/server/index.mjs',
+      require: './dist/server/index.js',
+      runtime: 'node',
     },
   ],
   dist: './dist',
