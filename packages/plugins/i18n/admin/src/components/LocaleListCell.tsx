@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Box, Flex, Popover, Typography, useCollator } from '@strapi/design-system';
 import { CarretDown } from '@strapi/icons';
-import { unstable_useDocument as useDocument } from '@strapi/strapi/admin';
+import { unstable_useDocument as useDocument } from '@strapi/admin/strapi-admin';
 import { useIntl } from 'react-intl';
 import styled from 'styled-components';
 

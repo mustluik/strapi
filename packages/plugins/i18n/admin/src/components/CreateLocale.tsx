@@ -32,7 +32,7 @@ import {
   useForm,
   useAPIErrorHandler,
   useNotification,
-} from '@strapi/strapi/admin';
+} from '@strapi/admin/strapi-admin';
 import { useIntl } from 'react-intl';
 import * as yup from 'yup';
 

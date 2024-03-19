@@ -3,7 +3,7 @@ import { BaseQueryFn } from '@reduxjs/toolkit/query';
 import { getFetchClient } from '@strapi/helper-plugin';
 import { isAxiosError, type AxiosRequestConfig } from 'axios';
 
-import type { ApiError } from '@strapi/strapi/admin';
+import type { ApiError } from '@strapi/admin/strapi-admin';
 
 /* -------------------------------------------------------------------------------------------------
  * Axios data
