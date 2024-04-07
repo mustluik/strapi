@@ -101,6 +101,7 @@ const LeftMenu = () => {
           defaultMessage: 'Search for a content type',
         })}
       />
+      <p>Test123</p>
       <SubNavSections>
         {menu.map((section) => {
           return (
