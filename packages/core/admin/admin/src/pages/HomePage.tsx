@@ -91,55 +91,39 @@ const HomePageCE = () => {
                 <Box paddingLeft={6} paddingBottom={10}>
                   <Flex direction="column" alignItems="flex-start" gap={5}>
                     <Typography as="h1" variant="alpha">
-                      {hasAlreadyCreatedContentTypes
-                        ? formatMessage({
-                            id: 'app.components.HomePage.welcome.again',
-                            defaultMessage: 'Welcome 👋',
-                          })
-                        : formatMessage({
-                            id: 'app.components.HomePage.welcome',
-                            defaultMessage: 'Welcome on board!',
-                          })}
+                      {formatMessage({
+                          id: 'mustluik.hello',
+                          defaultMessage: 'Hi 👋',
+                      })}
                     </Typography>
                     <WordWrap textColor="neutral600" variant="epsilon">
-                      {hasAlreadyCreatedContentTypes
-                        ? formatMessage({
-                            id: 'app.components.HomePage.welcomeBlock.content.again',
-                            defaultMessage:
-                              'We hope you are making progress on your project! Feel free to read the latest news about Strapi. We are giving our best to improve the product based on your feedback.',
-                          })
-                        : formatMessage({
-                            id: 'app.components.HomePage.welcomeBlock.content',
-                            defaultMessage:
-                              'Congrats! You are logged as the first administrator. To discover the powerful features provided by Strapi, we recommend you to create your first Content type!',
-                          })}
+                    {formatMessage({
+                      id: 'mustluik.intro',
+                      defaultMessage:
+                        'Here you can prepare, conduct and analyze media trainings.',
+                    })}
                     </WordWrap>
-                    {hasAlreadyCreatedContentTypes ? (
-                      <Link isExternal href="https://strapi.io/blog">
+                    <Link startIcon={<ArrowRight />} isExternal={false} href="/admin/plugins/mustluik/game">
                         {formatMessage({
-                          id: 'app.components.HomePage.button.blog',
-                          defaultMessage: 'See more on the blog',
+                          id: 'mustluik.plan-game',
+                          defaultMessage: 'Go directly to game view.',
                         })}
-                      </Link>
-                    ) : (
-                      <Button size="L" onClick={handleClick} endIcon={<ArrowRight />}>
+                    </Link>
+                    <Link startIcon={<ArrowRight />} isExternal={false} href="/admin/content-manager/collectionType/api::article.article">
                         {formatMessage({
-                          id: 'app.components.HomePage.create',
-                          defaultMessage: 'Create your first Content type',
+                          id: 'mustluik.add-articles',
+                          defaultMessage: 'Go directly to content management.',
                         })}
-                      </Button>
-                    )}
+                    </Link>
+                    <Link startIcon={<ArrowRight />} disabled href="#">
+                        {formatMessage({
+                          id: 'mustluik.invite-players',
+                          defaultMessage: 'Read manual',
+                        })}
+                    </Link>
                   </Flex>
                 </Box>
               </div>
-            </GridItem>
-          </Grid>
-          <Grid gap={6}>
-            <GridItem col={8} s={12}>
-              {showGuidedTour ? <GuidedTourHomepage /> : <ContentBlocks />}
-            </GridItem>
-            <GridItem col={4} s={12}>
-              <SocialLinks />
             </GridItem>
           </Grid>
         </Box>
@@ -161,147 +145,6 @@ const LogoContainer = styled(Box)`
 const WordWrap = styled(Typography)`
   word-break: break-word;
 `;
-
-/* -------------------------------------------------------------------------------------------------
- * ContentBlocks
- * -----------------------------------------------------------------------------------------------*/
-
-const ContentBlocks = () => {
-  const { formatMessage } = useIntl();
-  const { trackUsage } = useTracking();
-
-  return (
-    <Flex direction="column" alignItems="stretch" gap={5}>
-      <BlockLink
-        href="https://cloud.strapi.io"
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-        onClick={() => {
-          trackUsage('didClickOnTryStrapiCloudSection');
-        }}
-      >
-        <Flex
-          shadow="tableShadow"
-          hasRadius
-          padding={6}
-          background="neutral0"
-          position="relative"
-          gap={6}
-        >
-          <CloudCustomWrapper hasRadius padding={3}>
-            <CloudIconWrapper
-              width="2rem"
-              height="2rem"
-              justifyContent="center"
-              hasRadius
-              alignItems="center"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="15" fill="none">
-                <path
-                  fill="#fff"
-                  fillRule="evenodd"
-                  d="M4.39453 13.8298C1.93859 13.6455 0 11.468 0 8.80884 0 6.0289 2.11876 3.7753 4.73238 3.7753c.46775 0 .91964.07218 1.34638.20664C7.21234 1.62909 9.66469 0 12.5073 0c2.5102 0 4.7161 1.27036 5.9782 3.18766a4.54297 4.54297 0 0 1 .6132-.04144C21.8056 3.14622 24 5.54066 24 8.49436c0 2.89194-2.1036 5.24784-4.7323 5.34504v.0031l-1.8948.278a38.18054 38.18054 0 0 1-11.08354 0l-1.89483-.278v-.0127Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </CloudIconWrapper>
-          </CloudCustomWrapper>
-          <Flex gap={1} direction="column" alignItems="start">
-            <Typography fontWeight="semiBold" variant="pi">
-              {formatMessage({
-                id: 'app.components.BlockLink.cloud',
-                defaultMessage: 'Strapi Cloud',
-              })}
-            </Typography>
-            <Typography textColor="neutral600">
-              {formatMessage({
-                id: 'app.components.BlockLink.cloud.content',
-                defaultMessage: 'Fully-managed cloud hosting for your Strapi project.',
-              })}
-            </Typography>
-            <Box src={cloudFlagsImage} position="absolute" top={0} right={0} as="img" />
-          </Flex>
-        </Flex>
-      </BlockLink>
-      <BlockLink
-        href="https://strapi.io/resource-center"
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-        onClick={() => trackUsage('didClickonReadTheDocumentationSection')}
-      >
-        <ContentBox
-          title={formatMessage({
-            id: 'global.documentation',
-            defaultMessage: 'Documentation',
-          })}
-          subtitle={formatMessage({
-            id: 'app.components.BlockLink.documentation.content',
-            defaultMessage: 'Discover the essential concepts, guides and instructions.',
-          })}
-          icon={<InformationSquare />}
-          iconBackground="primary100"
-        />
-      </BlockLink>
-      <BlockLink
-        href="https://strapi.io/starters"
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-        onClick={() => trackUsage('didClickonCodeExampleSection')}
-      >
-        <ContentBox
-          title={formatMessage({
-            id: 'app.components.BlockLink.code',
-            defaultMessage: 'Code example',
-          })}
-          subtitle={formatMessage({
-            id: 'app.components.BlockLink.code.content',
-            defaultMessage: 'Learn by using ready-made starters for your projects.',
-          })}
-          icon={<CodeSquare />}
-          iconBackground="warning100"
-        />
-      </BlockLink>
-      <BlockLink
-        href="https://strapi.io/blog/categories/tutorials"
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-        onClick={() => trackUsage('didClickonTutorialSection')}
-      >
-        <ContentBox
-          title={formatMessage({
-            id: 'app.components.BlockLink.tutorial',
-            defaultMessage: 'Tutorials',
-          })}
-          subtitle={formatMessage({
-            id: 'app.components.BlockLink.tutorial.content',
-            defaultMessage: 'Follow step-by-step instructions to use and customize Strapi.',
-          })}
-          icon={<PlaySquare />}
-          iconBackground="secondary100"
-        />
-      </BlockLink>
-      <BlockLink
-        href="https://strapi.io/blog"
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-        onClick={() => trackUsage('didClickonBlogSection')}
-      >
-        <ContentBox
-          title={formatMessage({
-            id: 'app.components.BlockLink.blog',
-            defaultMessage: 'Blog',
-          })}
-          subtitle={formatMessage({
-            id: 'app.components.BlockLink.blog.content',
-            defaultMessage: 'Read the latest news about Strapi and the ecosystem.',
-          })}
-          icon={<FeatherSquare />}
-          iconBackground="alternative100"
-        />
-      </BlockLink>
-    </Flex>
-  );
-};
 
 const BlockLink = styled.a`
   text-decoration: none;
