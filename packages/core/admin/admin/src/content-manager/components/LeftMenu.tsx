@@ -22,7 +22,7 @@ const LeftMenu = () => {
   );
   const singleTypeLinks = useTypedSelector((state) => state['content-manager_app'].singleTypeLinks);
 
-  const { startsWith } = useFilter(locale, {
+  const { includes } = useFilter(locale, {
     sensitivity: 'base',
   });
 
@@ -36,8 +36,8 @@ const LeftMenu = () => {
         {
           id: 'collectionTypes',
           title: formatMessage({
-            id: getTranslation('components.LeftMenu.collection-types'),
-            defaultMessage: 'Collection Types',
+            id: getTranslation('components.LeftMenu.collection-types--'),
+            defaultMessage: 'content',
           }),
           searchable: true,
           links: collectionTypeLinks,
@@ -45,8 +45,8 @@ const LeftMenu = () => {
         {
           id: 'singleTypes',
           title: formatMessage({
-            id: getTranslation('components.LeftMenu.single-types'),
-            defaultMessage: 'Single Types',
+            id: getTranslation('components.LeftMenu.single-types--'),
+            defaultMessage: 'setup',
           }),
           searchable: true,
           links: singleTypeLinks,
@@ -57,7 +57,7 @@ const LeftMenu = () => {
           /**
            * Filter by the search value
            */
-          .filter((link) => startsWith(link.title, search))
+          .filter((link) => includes(link.title, search))
           /**
            * Sort correctly using the language
            */
@@ -68,11 +68,12 @@ const LeftMenu = () => {
           .map((link) => {
             return {
               ...link,
-              title: formatMessage({ id: link.title, defaultMessage: link.title }),
+              title: formatMessage({ id: link.title, defaultMessage: link.title })
+                .replace(/^[0-9]* /,''),
             };
           }),
       })),
-    [collectionTypeLinks, search, singleTypeLinks, startsWith, formatMessage, formatter]
+    [collectionTypeLinks, search, singleTypeLinks, includes, formatMessage, formatter]
   );
 
   const handleClear = () => {

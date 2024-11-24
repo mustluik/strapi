@@ -443,7 +443,7 @@ const ListViewPage = ({
   const headerLayoutTitle = formatMessage({
     id: info.displayName,
     defaultMessage: info.displayName || defaultHeaderLayoutTitle,
-  });
+  }).replace(/^[0-9]* /,'');
 
   const { runHookWaterfall } = useStrapiApp();
   const displayedHeaders = useTypedSelector(
