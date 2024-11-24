@@ -14,11 +14,11 @@ const CellValue = ({ type, value }: CellValueProps) => {
   let formattedValue = value;
 
   if (type === 'date') {
-    formattedValue = formatDate(parseISO(value), { dateStyle: 'full' });
+    formattedValue = formatDate(parseISO(value), { dateStyle: 'medium' });
   }
 
   if (type === 'datetime') {
-    formattedValue = formatDate(value, { dateStyle: 'full', timeStyle: 'short' });
+    formattedValue = formatDate(value, { dateStyle: 'medium', timeStyle: 'short', hour12:false, hourCycle: 'h23' });
   }
 
   if (type === 'time') {
