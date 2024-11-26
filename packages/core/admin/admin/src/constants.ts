@@ -136,11 +136,11 @@ export type SettingsMenu = {
 
 export const SETTINGS_LINKS_CE = (): SettingsMenu => ({
   global: [
-    {
-      intlLabel: { id: 'Settings.application.title', defaultMessage: 'Overview' },
-      to: '/settings/application-infos',
-      id: '000-application-infos',
-    },
+    // {
+    //   intlLabel: { id: 'Settings.application.title', defaultMessage: 'Overview' },
+    //   to: '/settings/application-infos',
+    //   id: '000-application-infos',
+    // },
     {
       intlLabel: { id: 'Settings.webhooks.title', defaultMessage: 'Webhooks' },
       to: '/settings/webhooks',

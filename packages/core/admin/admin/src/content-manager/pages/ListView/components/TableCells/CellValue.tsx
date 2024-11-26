@@ -18,7 +18,7 @@ const CellValue = ({ type, value }: CellValueProps) => {
   }
 
   if (type === 'datetime') {
-    formattedValue = formatDate(value, { dateStyle: 'medium', timeStyle: 'short', hour12:false, hourCycle: 'h23' });
+    formattedValue = formatDate(value, { dateStyle: 'medium', timeStyle: 'medium', hour12:false, hourCycle: 'h23' });
   }
 
   if (type === 'time') {
@@ -29,7 +29,7 @@ const CellValue = ({ type, value }: CellValueProps) => {
     date.setSeconds(second);
 
     formattedValue = formatTime(date, {
-      timeStyle: 'short',
+      timeStyle: 'medium',
     });
   }
 
